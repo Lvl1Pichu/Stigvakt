@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "StigvaktApp",
-    "slug": "StigvaktApp",
+    "name": "Stigvakt",
+    "slug": "Stigvakt",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
