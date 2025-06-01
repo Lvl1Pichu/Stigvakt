@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StigvaktAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a8614e996540738f6b264c82e46c4ca58229bd4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbfceb5ec0703e8ac76a78ecea8502e6af03add3")]
 [assembly: System.Reflection.AssemblyProductAttribute("StigvaktAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StigvaktAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

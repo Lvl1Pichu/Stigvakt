@@ -8,31 +8,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{CE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StigvaktAPI", "Backend\StigvaktAPI\StigvaktAPI.csproj", "{24CF6080-E175-D65C-8D37-F1E053BA73BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StigvaktAPI", "Frontend\StigvaktAPI\StigvaktAPI.csproj", "{E48D7D4C-810B-A570-D73E-D1E8229B8525}"
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{24CF6080-E175-D65C-8D37-F1E053BA73BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24CF6080-E175-D65C-8D37-F1E053BA73BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24CF6080-E175-D65C-8D37-F1E053BA73BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24CF6080-E175-D65C-8D37-F1E053BA73BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E48D7D4C-810B-A570-D73E-D1E8229B8525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E48D7D4C-810B-A570-D73E-D1E8229B8525}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E48D7D4C-810B-A570-D73E-D1E8229B8525}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E48D7D4C-810B-A570-D73E-D1E8229B8525}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{24CF6080-E175-D65C-8D37-F1E053BA73BB} = {1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}
-		{E48D7D4C-810B-A570-D73E-D1E8229B8525} = {CE609670-85B9-0D16-FB54-ED063D5D8A6D}
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {34178B62-0476-46FD-B9D1-EA75132D965B}
-	EndGlobalSection
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Any CPU = Debug|Any CPU
+        Release|Any CPU = Release|Any CPU
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {24CF6080-E175-D65C-8D37-F1E053BA73BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {24CF6080-E175-D65C-8D37-F1E053BA73BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {24CF6080-E175-D65C-8D37-F1E053BA73BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {24CF6080-E175-D65C-8D37-F1E053BA73BB}.Release|Any CPU.Build.0 = Release|Any CPU
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+    GlobalSection(NestedProjects) = preSolution
+        {24CF6080-E175-D65C-8D37-F1E053BA73BB} = {1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}
+    EndGlobalSection
+    GlobalSection(ExtensibilityGlobals) = postSolution
+        SolutionGuid = {34178B62-0476-46FD-B9D1-EA75132D965B}
+    EndGlobalSection
 EndGlobal

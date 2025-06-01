@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, ActivityIndicator } from 'react-native';
-import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
+// Comment out Firebase imports until authentication is implemented
+// import { initializeApp } from 'firebase/app';
+// import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import axios from 'axios';
 
-// Firebase configuration
-// Replace with your own Firebase project details
+// Firebase configuration commented out for now
+/*
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_AUTH_DOMAIN",
@@ -19,16 +20,20 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-// Backend API URL
-const API_URL = 'http://localhost:5104/api';
+*/
+// Backend API URL for Web
+// const API_URL = 'http://localhost:5104/api';
+// Backend API URL App
+const API_URL = 'http://10.0.2.2:5104/api';
 
 export default function App() {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Changed User type to any since we're not using Firebase User type
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
-  // Check if user is logged in
+  // Remove authentication check useEffect
+  /*
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -37,18 +42,16 @@ export default function App() {
 
     return () => unsubscribe();
   }, []);
+  */
 
-  // Example function to get data from the backend
+  // Simplified fetch data function without authentication
   const fetchData = async () => {
     try {
       setLoading(true);
-      // Get ID token if user is logged in
-      const idToken = user ? await user.getIdToken() : null;
+      // Removed authentication token logic
       
-      // Call the backend API
-      const response = await axios.get(`${API_URL}/trails`, {
-        headers: idToken ? { Authorization: `Bearer ${idToken}` } : {}
-      });
+      // Call the backend API without auth headers
+      const response = await axios.get(`${API_URL}/trails`);
       
       setMessage(JSON.stringify(response.data, null, 2));
     } catch (error: any) {
@@ -71,7 +74,7 @@ export default function App() {
       <Text style={styles.title}>Stigvakt</Text>
       
       <Text style={styles.subtitle}>
-        {user ? `Welcome, ${user.email}` : 'Welcome, Guest'}
+        Welcome to Stigvakt
       </Text>
       
       <View style={styles.buttonContainer}>

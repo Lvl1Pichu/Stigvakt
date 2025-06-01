@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Backend (https)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/Backend/StigvaktAPI/bin/Debug/net8.0/StigvaktAPI.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/Backend/StigvaktAPI",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:7075;http://localhost:5104",
+        "ASPNETCORE_LAUNCH_PROFILE": "http"
+      },
+      "console": "internalConsole"
+    },
+    {
+      "name": "Launch Frontend (Android)",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/Frontend/StigvaktApp",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "android"
+      ],
+      "console": "integratedTerminal"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack",
+      "configurations": ["Launch Backend (https)", "Launch Frontend (Android)"]
+    }
+  ]
+}
