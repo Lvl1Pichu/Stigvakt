@@ -41,7 +41,7 @@ namespace StigvaktAPI.Controllers
         // Protected endpoint - requires authentication
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> ReportIssue([FromBody] TrailIssueReport report)
+        public async Task<IActionResult> ReportIssue([FromBody] TrailIssue report)
         {
             // Extract user ID from auth token
             string userId = User.FindFirst("user_id")?.Value ?? "unknown";
@@ -53,7 +53,7 @@ namespace StigvaktAPI.Controllers
                 Location = report.Location,
                 Description = report.Description,
                 ImageUrl = report.ImageUrl,
-                UserId = userId
+                ReportedBy = userId
             };
             
             var savedIssue = await _dataService.ReportTrailIssueAsync(issue);
@@ -78,13 +78,5 @@ namespace StigvaktAPI.Controllers
                 Reports = userReports
             });
         }
-    }
-
-    public class TrailIssueReport
-    {
-        public int TrailId { get; set; }
-        public string Location { get; set; }
-        public string Description { get; set; }
-        public string? ImageUrl { get; set; }
     }
 }

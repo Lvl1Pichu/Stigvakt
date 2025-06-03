@@ -5,7 +5,7 @@ namespace StigvaktAPI.Services
     public interface IDataService
     {
         Task<List<Trail>> GetTrailsAsync();
-        Task<Trail> GetTrailByIdAsync(int id);
+        Task<Trail?> GetTrailByIdAsync(int id);
         Task<List<TrailIssue>> GetTrailIssuesAsync();
         Task<TrailIssue> ReportTrailIssueAsync(TrailIssue issue);
         Task<List<TrailIssue>> GetUserTrailIssuesAsync(string userId);
@@ -67,7 +67,7 @@ namespace StigvaktAPI.Services
             return Task.FromResult(_trails.ToList());
         }
         
-        public Task<Trail> GetTrailByIdAsync(int id)
+        public Task<Trail?> GetTrailByIdAsync(int id)
         {
             var trail = _trails.FirstOrDefault(t => t.Id == id);
             return Task.FromResult(trail);
@@ -87,7 +87,7 @@ namespace StigvaktAPI.Services
         
         public Task<List<TrailIssue>> GetUserTrailIssuesAsync(string userId)
         {
-            var userIssues = _issues.Where(i => i.UserId == userId).ToList();
+            var userIssues = _issues.Where(i => i.ReportedBy == userId).ToList();
             return Task.FromResult(userIssues);
         }
     }
