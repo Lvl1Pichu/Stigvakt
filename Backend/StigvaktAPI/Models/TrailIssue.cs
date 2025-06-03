@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 
 namespace StigvaktAPI.Models
 {
@@ -6,19 +5,15 @@ namespace StigvaktAPI.Models
     {
         public int Id { get; set; }
         
-        [Required]
         public int TrailId { get; set; }
 
         public int SectionId { get; set; } = 0; // Default to 0 if not specified, indicating the issue is on the trail itself
         
-        [Required]
-        public string ReportedBy { get; set; }
+        public string? ReportedBy { get; set; }
         
-        [Required]
-        public string Location { get; set; }
+        public string? Location { get; set; }
         
-        [Required]
-        public string Description { get; set; }
+        public string? Description { get; set; }
         
         public string? ImageUrl { get; set; }
         

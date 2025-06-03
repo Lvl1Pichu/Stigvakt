@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using StigvaktAPI.Controllers;
 
 namespace StigvaktAPI.Models;
 

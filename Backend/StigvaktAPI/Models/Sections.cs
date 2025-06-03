@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace StigvaktAPI.Models;
 
 public class Sections

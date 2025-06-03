@@ -10,6 +10,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import { signIn, signUp } from '../services/authContext'; // Adjust the import path as necessary
 
 interface LoginProps {
   onLogin: (email: string, password: string) => void;
@@ -22,6 +23,7 @@ export const Login = ({ onLogin, onRegister }: LoginProps) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
   const [error, setError] = useState('');
 
   const validateForm = () => {
@@ -44,6 +46,30 @@ export const Login = ({ onLogin, onRegister }: LoginProps) => {
     }
     
     return true;
+  };
+
+  const handleAuth = async () => {
+    if (!email || !password) {
+      Alert.alert('Error', 'Please enter both email and password');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      if (isRegistering) {
+        if (password !== confirmPassword) {
+          Alert.alert('Error', 'Passwords do not match');
+          return;
+        }
+        await signUp(email, password);
+      } else {
+        await signIn(email, password);
+      }
+    } catch (error: any) {
+      Alert.alert('Authentication Error', error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSubmit = async () => {

@@ -40,7 +40,6 @@ namespace StigvaktAPI.Controllers
         }
 
         [HttpGet("test")]
-        [Authorize]
         public IActionResult TestAuth()
         {
             return Ok(new { Message = "You are authenticated!" });
@@ -50,5 +49,10 @@ namespace StigvaktAPI.Controllers
     public class VerifyTokenRequest
     {
         public string IdToken { get; set; }
+    }
+
+    public class AuthResponse
+    {
+        public required string IdToken { get; set; }
     }
 }

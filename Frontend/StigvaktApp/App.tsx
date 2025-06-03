@@ -23,9 +23,9 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 */
 // Backend API URL for Web
-// const API_URL = 'http://localhost:5104/api';
+const API_URL = 'http://localhost:5104/api';
 // Backend API URL App
-const API_URL = 'http://10.0.2.2:5104/api';
+// const API_URL = 'http://10.0.2.2:5104/api';
 
 export default function App() {
   // Changed User type to any since we're not using Firebase User type
