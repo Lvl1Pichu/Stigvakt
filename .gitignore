@@ -1,0 +1,38 @@
+# .NET build output
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.dbmdl
+*.jfm
+*.pfx
+*.publishsettings
+
+# IDE files
+.idea/
+.vscode/
+*.sln.iml
+
+# Node.js / React Native
+node_modules/
+npm-debug.log
+yarn-error.log
+.expo/
+dist/
+web-build/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Debug files
+*.log

@@ -8,9 +8,11 @@ namespace StigvaktAPI.Models
         
         [Required]
         public int TrailId { get; set; }
+
+        public int SectionId { get; set; } = 0; // Default to 0 if not specified, indicating the issue is on the trail itself
         
         [Required]
-        public string UserId { get; set; }
+        public string ReportedBy { get; set; }
         
         [Required]
         public string Location { get; set; }
@@ -32,33 +34,5 @@ namespace StigvaktAPI.Models
         InProgress,
         Resolved,
         Closed
-    }
-    
-    public class Trail
-    {
-        public int Id { get; set; }
-        
-        [Required]
-        public string Name { get; set; }
-        
-        [Required]
-        public string Location { get; set; }
-        
-        public string? Description { get; set; }
-        
-        public string? Difficulty { get; set; }
-        
-        public double? Length { get; set; }
-        
-        public TrailCondition Condition { get; set; } = TrailCondition.Unknown;
-    }
-    
-    public enum TrailCondition
-    {
-        Unknown,
-        Poor,
-        Fair,
-        Good,
-        Excellent
     }
 }

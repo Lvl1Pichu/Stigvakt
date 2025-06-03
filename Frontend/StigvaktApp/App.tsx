@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, Button, ActivityIndicator } from 'react-native'
 // import { initializeApp } from 'firebase/app';
 // import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import axios from 'axios';
+import { Login } from './components/Login';
 
 // Firebase configuration commented out for now
 /*
@@ -31,18 +32,7 @@ export default function App() {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
-
-  // Remove authentication check useEffect
-  /*
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, []);
-  */
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Simplified fetch data function without authentication
   const fetchData = async () => {
@@ -61,6 +51,22 @@ export default function App() {
     }
   };
 
+  const handleLogin = async (email: string, password: string) => {
+    // For now, just simulate successful login
+    // In the future, this will connect to your backend/Firebase
+    console.log(`Login attempt with: ${email}`);
+    setIsAuthenticated(true);
+    setUser({ email });
+  };
+
+  const handleRegister = async (email: string, password: string, confirmPassword: string) => {
+    // For now, just simulate successful registration
+    // In the future, this will connect to your backend/Firebase
+    console.log(`Registration attempt with: ${email}`);
+    setIsAuthenticated(true);
+    setUser({ email });
+  };
+
   if (loading) {
     return (
       <View style={styles.container}>
@@ -69,16 +75,35 @@ export default function App() {
     );
   }
   
+  // If not authenticated, show the login screen
+  if (!isAuthenticated) {
+    return (
+      <View style={styles.container}>
+        <Login onLogin={handleLogin} onRegister={handleRegister} />
+        <StatusBar style="auto" />
+      </View>
+    );
+  }
+  
+  // If authenticated, show the main app screen
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Stigvakt</Text>
       
       <Text style={styles.subtitle}>
-        Welcome to Stigvakt
+        Welcome to Stigvakt, {user?.email}
       </Text>
       
       <View style={styles.buttonContainer}>
         <Button title="Fetch Trail Data" onPress={fetchData} />
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <Button 
+          title="Logout" 
+          onPress={() => setIsAuthenticated(false)} 
+          color="#FF6347"
+        />
       </View>
       
       {message ? (
