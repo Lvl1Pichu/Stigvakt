@@ -10,7 +10,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { signIn, signUp } from '../services/authContext'; // Adjust the import path as necessary
+import { signIn, signUp } from '../services/authContext';
 
 interface LoginProps {
   onLogin: (email: string, password: string) => void;
