@@ -4,17 +4,18 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  User
+  User,
+  UserCredential
 } from 'firebase/auth';
 import { auth } from '../config/firebase';
-
 interface AuthContextType {
   currentUser: User | null;
   loading: boolean;
-  signUp: (email: string, password: string) => Promise<void>;
-  signIn: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string) => Promise<UserCredential>;
+  signIn: (email: string, password: string) => Promise<UserCredential>;
   logout: () => Promise<void>;
 }
+
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -32,7 +33,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // Sign out user
+  // Sign out user  
   const logout = async () => {
     return signOut(auth);
   };

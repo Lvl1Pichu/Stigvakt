@@ -23,12 +23,8 @@ namespace StigvaktAPI.Controllers
         {
             try
             {
-                // This is a placeholder for the actual Firebase token verification
-                // In a real implementation, you would use FirebaseAuth.DefaultInstance.VerifyIdTokenAsync
-                // However, for the template setup, we'll just return a successful response
-                
-                // var decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(request.IdToken);
-                // var uid = decodedToken.Uid;
+                var decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(request.IdToken);
+                var uid = decodedToken.Uid;
                 
                 return Ok(new { Message = "Token verified successfully" });
             }

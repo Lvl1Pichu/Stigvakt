@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   View,
   Text,
@@ -10,7 +10,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { signIn, signUp } from '../services/authContext';
+import { AuthContext } from '../services/authContext';
 
 interface LoginProps {
   onLogin: (email: string, password: string) => void;
@@ -25,6 +25,7 @@ export const Login = ({ onLogin, onRegister }: LoginProps) => {
   const [loading, setLoading] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
   const [error, setError] = useState('');
+  const auth = useContext(AuthContext);
 
   const validateForm = () => {
     setError('');
@@ -61,9 +62,9 @@ export const Login = ({ onLogin, onRegister }: LoginProps) => {
           Alert.alert('Error', 'Passwords do not match');
           return;
         }
-        await signUp(email, password);
+        await auth?.signUp(email, password);
       } else {
-        await signIn(email, password);
+        await auth?.signIn(email, password);
       }
     } catch (error: any) {
       Alert.alert('Authentication Error', error.message);

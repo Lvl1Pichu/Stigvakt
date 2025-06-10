@@ -37,6 +37,9 @@ Desktop.ini
 # Debug files
 *.log
 
+#Environment files
+.env
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
