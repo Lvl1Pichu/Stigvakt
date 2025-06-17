@@ -23,17 +23,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Create new user with email and password
   const signUp = async (email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // Sign in existing user
   const signIn = async (email: string, password: string) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // Sign out user  
   const logout = async () => {
     return signOut(auth);
   };

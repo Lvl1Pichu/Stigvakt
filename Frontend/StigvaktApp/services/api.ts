@@ -1,10 +1,8 @@
 import axios from 'axios';
 import { getAuth } from 'firebase/auth';
 
-// Replace with your actual backend API URL
 const API_URL = 'https://localhost:7075/api';
 
-// Create axios instance with default config
 const apiClient = axios.create({
   baseURL: API_URL,
   headers: {
@@ -12,7 +10,6 @@ const apiClient = axios.create({
   }
 });
 
-// Add request interceptor to add auth token to requests when available
 apiClient.interceptors.request.use(async (config) => {
   try {
     const auth = getAuth();

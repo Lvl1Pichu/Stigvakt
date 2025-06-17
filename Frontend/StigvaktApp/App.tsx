@@ -6,41 +6,39 @@ import { StyleSheet, Text, View, Button, ActivityIndicator } from 'react-native'
 // import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import axios from 'axios';
 import { Login } from './components/Login';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 
-// Firebase configuration commented out for now
-/*
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "AIzaSyBcTNIhiZelID2uzED3XIPzaazc6K4dNs0",
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN || "stigvakt-ad307.firebaseapp.com",
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || "stigvakt-ad307",
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET || "stigvakt-ad307.firebasestorage.app",
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID || "778088096854",
+  appId: process.env.REACT_APP_FIREBASE_APP_ID || "1:778088096854:web:58820a14f5a4fda8b147f7",
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID || "G-XV56J71ZJ4"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-*/
+
 // Backend API URL for Web
 const API_URL = 'http://localhost:5104/api';
 // Backend API URL App
 // const API_URL = 'http://10.0.2.2:5104/api';
 
 export default function App() {
-  // Changed User type to any since we're not using Firebase User type
+  // Changed type to any since not using Firebase User yet
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Simplified fetch data function without authentication
   const fetchData = async () => {
     try {
-      setLoading(true);
-      // Removed authentication token logic
-      
-      // Call the backend API without auth headers
+      setLoading(true);      
+      // Add auth headers
       const response = await axios.get(`${API_URL}/trails`);
       
       setMessage(JSON.stringify(response.data, null, 2));
@@ -52,16 +50,12 @@ export default function App() {
   };
 
   const handleLogin = async (email: string, password: string) => {
-    // For now, just simulate successful login
-    // In the future, this will connect to your backend/Firebase
     console.log(`Login attempt with: ${email}`);
     setIsAuthenticated(true);
     setUser({ email });
   };
 
   const handleRegister = async (email: string, password: string, confirmPassword: string) => {
-    // For now, just simulate successful registration
-    // In the future, this will connect to your backend/Firebase
     console.log(`Registration attempt with: ${email}`);
     setIsAuthenticated(true);
     setUser({ email });
@@ -75,7 +69,6 @@ export default function App() {
     );
   }
   
-  // If not authenticated, show the login screen
   if (!isAuthenticated) {
     return (
       <View style={styles.container}>
@@ -85,7 +78,6 @@ export default function App() {
     );
   }
   
-  // If authenticated, show the main app screen
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Stigvakt</Text>
